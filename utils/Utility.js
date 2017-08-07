@@ -154,10 +154,52 @@ export default class Utility {
     target.List = target.List.concat(List);
     target.Condition = Condition;
   }
+
   static $IsArray(arg) {
     if (!arg || !arg.length || arg.length === 0) {
       return false;
     }
     return arg.constructor.name === 'Array';
   }
+
+  static $SetContent(key, value, isSaveStore) {
+    if (!this.__TempContent) {
+      this.__TempContent = {};
+    }
+    this.__TempContent[key] = value;
+    if (!!isSaveStore) {
+      try {
+        wx.setStorageSync(key, JSON.stringify(value));
+      } catch (ex) {
+        console.log(ex);
+      }
+    }
+  }
+
+  static $GetContent(key) {
+    let __value = this.__TempContent ? this.__TempContent[key] : null;
+    if (!__value) {
+      try {
+        __value = wx.getStorageSync(key);
+        __value = JSON.parse(__value);
+        this.__TempContent[key] = __value;
+      }
+      catch (ex) {
+        console.log(ex);
+      }
+    }
+    return __value;
+  }
+
+  static $RemoveContent(key) {
+    if (this.__TempContent && this.__TempContent[key]) {
+      delete this.__TempContent[key];
+    }
+    try {
+      wx.removeStorageSync(key);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
 }

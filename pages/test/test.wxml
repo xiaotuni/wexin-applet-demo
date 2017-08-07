@@ -1,4 +1,4 @@
- <scroll-view scroll-y style="border:1px solid red;" 
+ <scroll-view scroll-y style="border:1px solid red;width:calc(100% - 2px);" 
  bindscrolltoupper="upper"
   bindscrolltolower="lower" 
   bindscroll="scroll"

@@ -35,7 +35,9 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
-    this.InitData({ PageIndex: 0, PageSize: 20 })
+    const __CND = { PageIndex: 0, PageSize: 20 };
+    this.InitData(__CND);
+    Utility.$SetContent('abcdef', __CND, true);
   },
 
   /**
@@ -48,7 +50,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const a = Utility.$GetContent('abcdef');
+    console.log(a);
   },
 
   /**
