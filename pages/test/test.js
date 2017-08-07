@@ -1,7 +1,7 @@
 // test.js
 // import ApiClient from '../../utils/ApiClient';
 import { ApiClient, Utility } from '../Core';
-
+var order = ['red', 'yellow', 'blue', 'green', 'red']
 
 Page({
 
@@ -13,32 +13,29 @@ Page({
       { id: 1001, title: 'aaaa' },
       { id: 1002, title: 'aaaa' },
       { id: 1003, title: 'aaaa' },
-    ]
+    ],
+    AreaInfo: {},
+    scrollTop: 100,
   },
-  updateData: function () {
+  updateData() {
     this.setData(this.data);
+  },
+  InitData(Condition) {
+    const self = this;
+    ApiClient.get(ApiClient.Api.UserList, { data: Condition }).then((data) => {
+      // self.data.AreaInfo = data;
+      Utility.$ParseData(self.data.AreaInfo, data);
+      self.updateData();
+    }, (err) => {
+      console.log(err);
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    for (let i = 0; i < 5; i++) {
-      const btn = {
-        id: i + 1,
-        title: '按钮_' + (i + 1),
-      }
-      this.data.buttons.push(btn);
-    }
-    this.updateData();
-
-    ApiClient.get('/userinfo/users', { params: {}, data: { pageIndex: 0, pageSize: 15 } }).then((data) => {
-      console.log('--------api------------');
-      console.log(data);
-      console.log('--------api------------');
-    }, (err) => {
-      // console.log(err);
-      // Utility.$Emit('gocom_alert', err);
-    });
+    const self = this;
+    this.InitData({ PageIndex: 0, PageSize: 20 })
   },
 
   /**
@@ -51,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    Utility.aaaaaaaaa();
+
   },
 
   /**
@@ -73,13 +70,20 @@ Page({
    */
   onPullDownRefresh: function () {
 
+    console.log('-----------bbb-');
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('-----------aaaaaaa-');
+    const { AreaInfo } = this.data;
+    const { Condition } = AreaInfo || {};
+    const { IsNextData } = Condition || {};
+    if (!!IsNextData) {
+      this.InitData(Condition);
+    }
   },
 
   /**
@@ -87,5 +91,29 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  upper: function (e) {
+    console.log(e)
+  },
+  lower: function (e) {
+    console.log(e)
+  },
+  scroll: function (e) {
+    console.log(e)
+  },
+  tap: function (e) {
+    for (var i = 0; i < order.length; ++i) {
+      if (order[i] === this.data.toView) {
+        this.setData({
+          toView: order[i + 1]
+        })
+        break
+      }
+    }
+  },
+  tapMove: function (e) {
+    this.setData({
+      scrollTop: this.data.scrollTop + 10
+    })
   }
 })

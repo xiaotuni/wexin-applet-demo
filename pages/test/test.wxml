@@ -1,11 +1,15 @@
-<!--test.wxml-->
-<text>test.wxml</text>
+ <scroll-view scroll-y style="border:1px solid red;" 
+ bindscrolltoupper="upper"
+  bindscrolltolower="lower" 
+  bindscroll="scroll"
+   scroll-into-view="{{toView}}" 
+   scroll-top="{{scrollTop}}">
+  <view wx:if="{{AreaInfo.List && AreaInfo.List.length>0}}">
 
- <scroll-view scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" scroll-top="" scroll-top="" scroll-into-view="" bindscrolltoupper="" bindscrolltolower="" bindscroll="">
-  <view wx:for="{{buttons}}" wx:for-item="btn" wx:key="id" > 
- ---{{btn.id}}~ {{btn.title}}
+    <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="AreaId" > 
+      <text class="id">{{area.AreaId}}</text>
+      <text class="name">{{area.AreaName}}</text>
+    </view>
+  
   </view>
-  acasdfa
-   <form report-submit="" bindsubmit="" bindreset=""></form>
- </scroll-view>
- 
+</scroll-view>

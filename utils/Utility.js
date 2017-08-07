@@ -47,8 +47,9 @@ export default class Utility {
       },
       UrlItem: {
         GoBack: 'GOCOM_GOBACK',
-        Home: 'home',
-
+        Home: '/pages/index/index',
+        Test: '/pages/test/test',
+        Login: '/pages/login/login',
       }
     }
   };
@@ -62,9 +63,101 @@ export default class Utility {
   }
 
   static $ToPage(url, params) {
-    console.log(url, params);
+    if (!url || !wx) {
+      return;
+    }
+    const _p = this.$ConvertToUrlParams(params);
+    let __url = url;
+    if (_p && _p !== '') {
+      __url += '/?' + _p;
+    }
+    wx.navigateTo({ url: __url });
+    // wx.redirectTo({ url: __url });
   }
-  static aaaaaaaaa() {
-    console.log('asfasf');
+
+  /**
+    * 将一个 对象转成url参数与&分开
+    *
+    * @param params 参数对象
+    * @param split 分割符
+    * @returns {*}
+    * @example {a:a,b:b,c:c,e:e}
+    * a=a&b=b&c=c&e=e
+    */
+  static $ConvertToUrlParams(params, options) {
+    const { split, notFields } = options || {};
+    if (!params || params === null) {
+      return null;
+    }
+    const __KeyValue = [];
+    const self = this;
+    const __JSONValue = (value) => {
+      try {
+        let __JValue;
+        if (value === null) {
+          return '';
+        }
+        const { constructor } = value;
+        if (typeof constructor === 'undefined' || constructor === null) {
+          return '';
+        }
+        switch (value.constructor.name) {
+          case 'Object':
+            __JValue = '{' + this.convertToUrlParams(value) + '}';
+            break;
+          case 'Array':
+            __JValue = JSON.stringify(value);
+            break;
+          default:
+            __JValue = value;
+        }
+        return __JValue;
+      } catch (ex) {
+        console.log(ex.message);
+        return value || '';
+      }
+    };
+    Object.keys(params).forEach((key) => {
+      const __value = params[key];
+      if (__value && __value !== '') {
+        if (key.toLowerCase() !== 'IsExistsNextData'.toLowerCase()) {
+          const _JValue = __JSONValue(__value);
+          if (notFields) {
+            if (notFields.indexOf(key) === -1) {
+              __KeyValue.push(key + '=' + _JValue);
+            }
+          } else {
+            __KeyValue.push(key + '=' + _JValue);
+          }
+        }
+      }
+    });
+    return __KeyValue.join(split ? split : '&');
+  }
+
+  static $ParseData(target, ReturnData) {
+    if (!target) {
+      target = {};
+      target.List = List;
+      target.Condition = Condition;
+      return;
+    }
+    const { Condition, List } = ReturnData;
+    if (Condition.PageIndex === 1) {
+      target.List = List;
+      target.Condition = Condition;
+      return;
+    }
+    if (!this.$IsArray(target.List)) {
+      target.List = [];
+    }
+    target.List = target.List.concat(List);
+    target.Condition = Condition;
+  }
+  static $IsArray(arg) {
+    if (!arg || !arg.length || arg.length === 0) {
+      return false;
+    }
+    return arg.constructor.name === 'Array';
   }
 }

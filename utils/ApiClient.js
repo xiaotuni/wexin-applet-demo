@@ -15,13 +15,29 @@ export default class ApiClient {
     methods.forEach((method) =>
       this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
         const url = formatUrl(path);
-        console.log('method :%s --> url is %s', method, url);
+
         const header = { 'Content-Type': 'application/json' };
+        const __Condition = Object.assign({}, params || {}, data || {});
+        const { PageIndex, PageSize } = __Condition;
         wx.request({
-          method, url, header, dataType: 'json', data,
+          method, url, header, dataType: 'json', data: __Condition,
           success: (res) => {
             const { statusCode, data, header } = res;
             if (statusCode === 200) {
+              if (PageIndex >= 0) {
+                if (data && data.length > 0) {
+                  __Condition.IsNextData = data.length < PageSize ? false : true;
+                  if (__Condition.IsNextData) {
+                    __Condition.PageIndex++
+                  }
+                  const NewData = {
+                    List: data,
+                    Condition: __Condition
+                  };
+                  resolve(NewData);
+                  return;
+                }
+              }
               resolve(data);
             } else {
               const { Events } = Utility.$ConstItem();
@@ -44,6 +60,10 @@ export default class ApiClient {
 
     this.Api = {
       Common: {},
+      /**
+       * 用户列表
+       */
+      UserList: '/common/area',
       /**
        * post 用户登录
        */

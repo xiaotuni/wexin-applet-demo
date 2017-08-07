@@ -1,5 +1,5 @@
 //app.js
-import { Utility, tool } from './pages/Core';
+import { Utility } from './pages/Core';
 
 App({
   onLaunch: function () {
@@ -7,13 +7,6 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
-
-    console.log('-------utility---------');
-    console.log(tool);
-    const u = Utility;
-    console.log(Utility);
-    console.log('-------utility---------');
 
     const { UrlItem, Events } = Utility.$ConstItem();
     const { HttpStatus } = Events;

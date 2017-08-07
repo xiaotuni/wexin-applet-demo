@@ -20,10 +20,6 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
       }
     ],
     "position": "bottom"
