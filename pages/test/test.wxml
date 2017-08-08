@@ -1,3 +1,6 @@
+<import src="../../components/loading/loading.wxml" />
+<template is="goComLoading" data="{{...LoadingData}}"/>
+
 <view>
  <button type="default" size="defaultSize" 
  plain="plain" bindtap="onTapScrollView" hover-class="other-button-hover">scroll view</button> 

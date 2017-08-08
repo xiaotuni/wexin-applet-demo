@@ -1,0 +1,7 @@
+<template name="goComLoading" style="font-size:30px;color:red;">
+  <view class="loadingCss" bindtap="onCloseLoading" wx:if="IsShow">
+    <view class="content">
+      <view class="title">{{Title}}</view>
+    </view>
+  </view>
+</template>
