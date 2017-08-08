@@ -40,7 +40,7 @@ export default class ApiClient {
               }
               resolve(data);
             } else {
-              const { Events } = Utility.$ConstItem();
+              const { Events } = Utility.$ConstItem;
               const { HttpStatus } = Events;
               const flag = HttpStatus[statusCode];
               if (flag) {

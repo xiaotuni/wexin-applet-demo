@@ -8,7 +8,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    const { UrlItem, Events } = Utility.$ConstItem();
+    const { UrlItem, Events } = Utility.$ConstItem;
     const { HttpStatus } = Events;
 
     Utility.$On(HttpStatus['400'], (args) => {

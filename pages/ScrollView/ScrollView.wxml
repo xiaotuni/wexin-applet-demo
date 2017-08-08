@@ -1,0 +1,12 @@
+<scroll-view scroll-y style="border:1px solid red;width:calc(100% - 2px);height:98vh;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <view wx:if="{{AreaInfo.List && AreaInfo.List.length>0}}">
+    <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="AreaId">
+      <text class="id">{{area.AreaId}}</text>
+      <text class="name">{{area.AreaName}}</text>
+    </view>
+  </view>
+  <view wx:if="!AreaInfo.List">
+  <button type="default" size="defaultSize" loading="loading" plain="plain"
+   disabled="disabled" bindtap="defaultTap" hover-class="other-button-hover">loading...</button>
+  </view>
+</scroll-view>

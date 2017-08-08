@@ -3,7 +3,8 @@
     "pages/test/test",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/ScrollView/ScrollView"
   ],
   "window": {
     "backgroundTextStyle": "light",
