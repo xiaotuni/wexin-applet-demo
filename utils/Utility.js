@@ -17,8 +17,8 @@ class Utility {
     return Event.on(name, callback);
   }
 
-  static $RemoveEvent(name) {
-    Event.remove(name);
+  static $RemoveEvent(name, index) {
+    Event.remove(name, index);
   }
 
   static $ToPage(url, params) {

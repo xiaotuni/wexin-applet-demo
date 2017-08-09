@@ -16,6 +16,8 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
+    getApp().Loading.OnInit();
+    Utility.$Loading();
     const __CND = { PageIndex: 0, PageSize: 20 };
     this.InitData(__CND);
     Utility.$SetContent('abcdef', __CND, true);
@@ -39,14 +41,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    console.log('-----scroll view---- on hide--');
+    getApp().Loading.OnDestroy();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log('-----scroll view---- on unload--');
+    getApp().Loading.OnDestroy();
   },
 
   /**
@@ -86,8 +90,9 @@ Page({
     ApiClient.get(ApiClient.Api.UserList, { data: Condition }).then((data) => {
       setTimeout(() => {
         Utility.$ParseData(self.data.AreaInfo, data);
-        self.UpdateData();
-      }, 5000);
+        Utility.$LoadingHide();
+        // self.UpdateData();
+      }, 2000);
     }, (err) => {
       console.log(err);
     });

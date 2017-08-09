@@ -48,11 +48,12 @@ export default class EventEmitter {
     if (this.isUndefined(this._events)) {
       return;
     }
+    
     const eve = this._events[name];
     if (this.isArray(eve)) {
-      eve.slice(index, 0);
+      eve.splice(index, 1);
       if (eve.length === 0) {
-        delete this._events[nam];
+        delete this._events[name];
       }
     }
   }
