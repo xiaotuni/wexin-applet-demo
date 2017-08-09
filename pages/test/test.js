@@ -86,23 +86,26 @@ Page({
     console.log('onTap--', type);
     Utility.$ToPage(Utility.$ConstItem.UrlItem.ScrollView);
   },
+
+  /**
+   * 弹出Loading组件，2秒后关闭
+   * 
+   */
   onTapLoading() {
     Utility.$Loading();
     let times = 2;
     this.data.LoadingTitle = '将在(' + times + ')后隐藏';
     this.setData(this.data);
-    const a = setInterval(() => {
+    const Interval = setInterval(() => {
       times--;
       this.data.LoadingTitle = '将在(' + times + ')后隐藏';
       this.setData(this.data);
       if (times === 0) {
         this.data.LoadingTitle = '点击显示Loading弹框';
         Utility.$LoadingHide();
-        clearInterval(a);
+        clearInterval(Interval);
       }
     }, 1000);
-  },
-  onTapLoadingHide() {
   }
 
 })

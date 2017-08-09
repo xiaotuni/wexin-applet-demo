@@ -1,27 +1,33 @@
 import { Utility, BaseComponent } from '../Core';
+/**
+ * loading组件，继承BaseComponent类
+ * 
+ * @class loading
+ * @extends {BaseComponent}
+ */
 class loading extends BaseComponent {
   constructor() {
     super();
-    // this.Title = '哈哈';
-    // this.data = {};
   }
 
+  /**
+   * 初始化操作
+   * 
+   * @memberof loading
+   */
   OnInit() {
     this.__Init(Utility);
     this.ListenerEvent();
-
-    // const __Pages = getCurrentPages();
-    // if (!Utility.$IsArray(__Pages)) {
-    //   return;
-    // }
-    // const __CurrentPage = __Pages[__Pages.length - 1];
-    // Object.assign(this, __CurrentPage);
-    // this.setData = __CurrentPage.setData;
     this.data.TData = { Title: '加载中...', IsShow: false };
-    this.setData(this.data);
     this.__CurrentPage.onCloseLoading = this.onCloseLoading.bind(this);
+    this.__UpdateData();
   }
 
+  /**
+   * 销毁事件，请在 页面 onHide 或 onUnload的时候，调用此方法
+   * 
+   * @memberof loading
+   */
   OnDestroy() {
     Object.keys(this.LoadingEventInfo || {}).forEach((key) => {
       const value = this.LoadingEventInfo[key];
@@ -29,10 +35,20 @@ class loading extends BaseComponent {
     });
   }
 
+  /**
+   * 更新数据，通知页面宣染用的
+   * 
+   * @memberof loading
+   */
   __UpdateData() {
     this.setData(this.data);
   }
 
+  /**
+   * 监听事件方法
+   * 
+   * @memberof loading
+   */
   ListenerEvent() {
     const { onLoading, onLoadingHide } = Utility.$ConstItem.Events.ShowModel;
     const self = this;
@@ -52,12 +68,16 @@ class loading extends BaseComponent {
     this.LoadingEventInfo = EventInfo;
   }
 
+  /**
+   * 关闭操作
+   * 
+   * @memberof loading
+   */
   onCloseLoading() {
     this.data.TData.IsShow = !this.data.TData.IsShow;
-    this.setData(this.data);
+    this.__UpdateData();
   }
 }
 
 const Loading = new loading();
-
 export { Loading };
