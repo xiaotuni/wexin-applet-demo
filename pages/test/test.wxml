@@ -1,11 +1,11 @@
 <import src="../../components/loading/loading.wxml" />
 <import src="../../components/tabs/tabs.wxml" />
-<template is="goComLoading" data="{{...TData}}"/>
+<template is="XtnLoading" data="{{...TData}}"/>
 
 <view>
   <button type="default" size="defaultSize" plain="plain" bindtap="onTapScrollView" hover-class="other-button-hover">scroll view</button> 
   
-  <template is="goComTabs" data="{{...TTabs}}"/>
+  <template is="XtnTabs" data="{{...TTabs}}"/>
 
   <button type="primary" size="defaultSize" bindtap="onTapLoading" >{{LoadingTitle}}</button> 
  

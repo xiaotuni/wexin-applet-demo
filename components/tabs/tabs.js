@@ -6,31 +6,35 @@ class tabs extends BaseComponent {
   }
 
   /**
+   * 初始化参数
    * 
-   * 
-   * @param {any} tabCollection [
-   *  {Id: 1, Name: ' ', onSelect: ()=>{ }}
-   * ]
+   * @param {any} tabInfo { 
+   *    SelectIndex:0,
+   *    List: [
+   *      {Id: 1, Name: ' ', onSelect: ()=>{ }}
+   *    ]
+   *  }
    * @memberof tabs
    */
-  OnInit(tabCollection) {
+  OnInit(tabInfo) {
+    let { List, SelectIndex } = tabInfo || {}
     this.__Init(Utility);
-    if (!tabCollection) {
-      tabCollection = [];
+    if (!List) {
+      List = [];
     }
 
-    if (!Utility.$IsArray(tabCollection)) {
+    if (!Utility.$IsArray(List)) {
       let i = 0;
       for (i; i < 4; i++) {
         const tab = {};
         tab.Id = i;
         tab.Name = 'Tab_' + i;
         tab.onSelect = this.___onSelect.bind(this, tab);
-        tabCollection.push(tab);
+        List.push(tab);
       }
     }
 
-    this.data.TTabs = { Tabs: tabCollection };
+    this.data.TTabs = { CurrentIndex: SelectIndex || 0, Tabs: List };
     this.__UpdateRender();
 
     this.__CurrentPage.onSelectTab = this.onSelectTab.bind(this);
@@ -47,14 +51,13 @@ class tabs extends BaseComponent {
     }
     const { id } = currentTarget;
 
-    this.data.TTabs.CurrentIndex = Number(id);// dataset.hi;
+    this.data.TTabs.CurrentIndex = Number(id);
     this.__UpdateRender();
     const currentTab = this.data.TTabs.Tabs[id];
     const { onSelect } = currentTab;
     if (onSelect) {
       onSelect(currentTab);
     }
-    console.log('---------', event.currentTarget.dataset);
   }
 }
 

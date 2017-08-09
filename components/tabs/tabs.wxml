@@ -1,4 +1,4 @@
-<template name="goComTabs">
+<template name="XtnTabs">
   <view class="tabsCss">
     <view class="tab" wx:for="{{Tabs}}"  wx:for-item="tab" wx:key="Id"
     bindtap="onSelectTab" id="{{index}}" data-hi="{{tab}}" >

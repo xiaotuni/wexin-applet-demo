@@ -1,24 +1,25 @@
-import { Utility } from '../Core';
-class loading {
+import { Utility, BaseComponent } from '../Core';
+class loading extends BaseComponent {
   constructor() {
-    this.Title = '哈哈';
-    this.data = {};
+    super();
+    // this.Title = '哈哈';
+    // this.data = {};
   }
 
   OnInit() {
+    this.__Init(Utility);
     this.ListenerEvent();
 
-    const __Pages = getCurrentPages();
-    if (!Utility.$IsArray(__Pages)) {
-      return;
-    }
-
-    const __CurrentPage = __Pages[__Pages.length - 1];
-    Object.assign(this, __CurrentPage);
-    this.setData = __CurrentPage.setData;
-    __CurrentPage.onCloseLoading = this.onCloseLoading.bind(this);
+    // const __Pages = getCurrentPages();
+    // if (!Utility.$IsArray(__Pages)) {
+    //   return;
+    // }
+    // const __CurrentPage = __Pages[__Pages.length - 1];
+    // Object.assign(this, __CurrentPage);
+    // this.setData = __CurrentPage.setData;
     this.data.TData = { Title: '加载中...', IsShow: false };
     this.setData(this.data);
+    this.__CurrentPage.onCloseLoading = this.onCloseLoading.bind(this);
   }
 
   OnDestroy() {

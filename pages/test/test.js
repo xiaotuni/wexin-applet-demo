@@ -23,11 +23,14 @@ Page({
    */
   onLoad: function (options) {
     getApp().Loading.OnInit();
-    getApp().Tabs.OnInit([
-      { Id: 1, Name: '状态1', onSelect: this.__OnSelectTab.bind(this) },
-      { Id: 2, Name: '状态2', onSelect: this.__OnSelectTab.bind(this) },
-      { Id: 3, Name: '状态3', onSelect: this.__OnSelectTab.bind(this) },
-    ]);
+    getApp().Tabs.OnInit({
+      SelectIndex: 2,
+      List: [
+        { Id: 1, Name: '状态1', onSelect: this.__OnSelectTab.bind(this) },
+        { Id: 2, Name: '状态2', onSelect: this.__OnSelectTab.bind(this) },
+        { Id: 3, Name: '状态3', onSelect: this.__OnSelectTab.bind(this) },
+      ]
+    });
   },
   __OnSelectTab(event, args) {
     console.log('__OnSelectTab---');
