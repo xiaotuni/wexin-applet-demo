@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import './components/loading/loading.wxss';
+@import './components/tabs/tabs.wxss';
 
 .container {
   height: 100%;

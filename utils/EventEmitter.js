@@ -24,8 +24,8 @@ export default class EventEmitter {
 
   on(name, handler) {
     if (!this.isFunction(handler)) {
-      console.log('监听必须是一个函数');
-      return;
+      console.warn('监听必须是一个函数');
+      return null;
     }
     if (this.isUndefined(this._events)) {
       this._events = {};
@@ -36,10 +36,25 @@ export default class EventEmitter {
       this._events[name] = eve;
     }
     if (eve.length > this._maxListeners) {
-      console.log('同一个方法监听不要大于 :%d', tis._maxListeners);
-      return;
+      console.warn('同一个方法监听不要大于 :%d', tis._maxListeners);
+      return null;
     }
     eve.push(handler);
+
+    return eve.length - 1;
+  }
+
+  remove(name, index) {
+    if (this.isUndefined(this._events)) {
+      return;
+    }
+    const eve = this._events[name];
+    if (this.isArray(eve)) {
+      eve.slice(index, 0);
+      if (eve.length === 0) {
+        delete this._events[nam];
+      }
+    }
   }
 
   isFunction(arg) {

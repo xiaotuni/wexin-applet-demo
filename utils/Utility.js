@@ -14,7 +14,11 @@ class Utility {
   }
 
   static $On(name, callback) {
-    Event.on(name, callback);
+    return Event.on(name, callback);
+  }
+
+  static $RemoveEvent(name) {
+    Event.remove(name);
   }
 
   static $ToPage(url, params) {
@@ -157,6 +161,14 @@ class Utility {
     }
   }
 
+  static $Loading() {
+    this.$Emit(this.$ConstItem.Events.ShowModel.onLoading);
+  }
+
+  static $LoadingHide() {
+    this.$Emit(this.$ConstItem.Events.ShowModel.onLoadingHide);
+  }
+
 }
 
 Utility.$ConstItem = {
@@ -164,8 +176,6 @@ Utility.$ConstItem = {
   Location: 'GOCOM_Location',
   AppIsGoBack: 'GOCOM_APP_IS_GO_BACK',
   BrowerTitle: 'GOCOM_BrowerTitle',
-  Event: 'GOCOM_EVENT_INFO',
-  UserInfo: 'GOCOM_USER_INFO',
   QueryParams: 'GOCOM_QUERY_PARAMS',
   UrlPathInfo: 'GOCOM_URL_PATH_INFO',
 

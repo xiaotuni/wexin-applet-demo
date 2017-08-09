@@ -1,9 +1,9 @@
 //app.js
 import { Utility } from './pages/Core';
-import { Loading } from './components/Index';
+import { Loading, Tabs } from './components/Index';
 
 App({
-  Loading,
+  Loading, Tabs,
   onLaunch: function () {
 
     //调用API从本地缓存中获取数据

@@ -1,0 +1,10 @@
+<template name="goComTabs">
+  <view class="tabsCss">
+    <view class="tab" wx:for="{{Tabs}}"  wx:for-item="tab" wx:key="Id"
+    bindtap="onSelectTab" id="{{index}}" data-hi="{{tab}}" >
+      <view class="col" id="{{index}}" data-hi="{{tab}}">
+        <text class="name {{index === CurrentIndex ? 'select' : ''}}">{{tab.Name}}</text>
+      </view>
+    </view>
+  </view>
+</template>

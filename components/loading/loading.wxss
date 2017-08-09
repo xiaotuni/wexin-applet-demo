@@ -17,8 +17,14 @@
   border: 1px solid #fff;
   border-radius: 10px;
   background: #fff;
+  text-align: center;
 }
 
 .loadingCss .content .title {
   text-align: center;
+}
+
+.loadingCss .content .loading {
+  width: 48px;
+  height: 48px;
 }

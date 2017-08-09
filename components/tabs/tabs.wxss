@@ -1,0 +1,32 @@
+  .tabsCss {
+    display: flex;
+    font-size: 14pt;
+    /* padding: 5px 0px; */
+    border: 1px solid #f0f0f0;
+    margin: 5px 0px;
+  }
+  
+  .tabsCss .tab {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #e0e0e0;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+  }
+  
+  .tabsCss :last-child {
+    border-right: none;
+  }
+  
+  .tabsCss .tab .col {
+    padding: 5px;
+  }
+  
+  .tabsCss .tab .col .name {
+    padding: 8px 0px 5px 0px;
+  }
+  
+  .tabsCss .tab .col .select {
+    border-bottom: 2px solid red;
+  }
