@@ -58,7 +58,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('---test on unload-----');
     getApp().Loading.OnDestroy();
   },
 
@@ -83,7 +82,6 @@ Page({
 
   },
   onTapScrollView: function (type) {
-    console.log('onTap--', type);
     Utility.$ToPage(Utility.$ConstItem.UrlItem.ScrollView);
   },
 
@@ -93,7 +91,7 @@ Page({
    */
   onTapLoading() {
     Utility.$Loading();
-    let times = 2;
+    let times = 5;
     this.data.LoadingTitle = '将在(' + times + ')后隐藏';
     this.setData(this.data);
     const Interval = setInterval(() => {

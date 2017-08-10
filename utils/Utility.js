@@ -31,11 +31,12 @@ class Utility {
       __url += '?' + _p;
     }
     wx.navigateTo({ url: __url });
-    // wx.redirectTo({ url: __url });
+    // wx.showNavigationBarLoading();
   }
-  
+
   static $GoBack() {
     wx.navigateBack(1);
+    // wx.showNavigationBarLoading();
   }
   /**
     * 将一个 对象转成url参数与&分开
@@ -143,8 +144,10 @@ class Utility {
     if (!__value) {
       try {
         __value = wx.getStorageSync(key);
-        __value = JSON.parse(__value);
-        this.__TempContent[key] = __value;
+        if (__value) {
+          __value = JSON.parse(__value);
+          this.__TempContent[key] = __value;
+        }
       }
       catch (ex) {
         console.log(ex);

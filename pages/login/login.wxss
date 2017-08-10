@@ -10,7 +10,6 @@
 .loginCss label {
   position: relative;
   margin-bottom: 25px;
-  
   align-items: center;
 }
 
@@ -23,10 +22,14 @@
   padding: 5px 10px;
   border-radius: 5px;
   margin-top: 10px;
+  font-size: 12pt;
 }
-.loginCss .last{
+
+
+.loginCss .last {
   margin-top: 30px;
 }
+
 .loginCss .txtBtn {
   margin-top: 30px;
 }

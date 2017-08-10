@@ -29,7 +29,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const self = this;
     getApp().Loading.OnInit();
     Utility.$Loading();
     const __CND = { PageIndex: 0, PageSize: 20 };
@@ -86,15 +85,15 @@ Page({
 
   InitData(Condition) {
     const self = this;
+    this.IsLoding = true;
     ApiClient.get(ApiClient.Api.UserList, { data: Condition }).then((data) => {
       setTimeout(() => {
         Utility.$ParseData(self.data.AreaInfo, data);
         Utility.$LoadingHide();
-        // self.UpdateData();
-      }, 2000);
-    }, (err) => {
+        self.IsLoding = false;
+      }, 1000);
+    }, () => {
       Utility.$LoadingHide();
-      console.log(err);
     });
   },
   upper: function (e) {
@@ -102,6 +101,12 @@ Page({
   },
   lower: function (e) {
     console.log(e)
+    // 向下
+    if (!!this.IsLoding) {
+      return;
+    }
+    console.log('加载下一页数据')
+    this.InitData(this.data.AreaInfo.Condition);
   },
   scroll: function (e) {
     // console.log(e)

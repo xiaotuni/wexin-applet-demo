@@ -2,13 +2,13 @@
 <template is="XtnLoading" data="{{...TData}}" />
 <view class="scrollViewCss">
 
-  <scroll-view scroll-y style="border:1px solid red;width:calc(100% - 2px);height:98vh;" bindscrolltoupper="upper" bindscrolltolower="lower"
+  <!-- <scroll-view scroll-y style="border:1px solid red;width:calc(100% - 2px);height:98vh;" bindscrolltoupper="upper" bindscrolltolower="lower"
     bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view wx:if="{{AreaInfo.List && AreaInfo.List.length>0}}">
-      <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="AreaId">
-        <text class="id">{{area.AreaId}}</text>
-        <text class="name">{{area.AreaName}}</text>
-      </view>
+  </scroll-view> -->
+  <view wx:if="{{AreaInfo.List && AreaInfo.List.length>0}}">
+    <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="AreaId">
+      <text class="id">{{area.AreaId}}</text>
+      <text class="name">{{area.AreaName}}</text>
     </view>
-  </scroll-view>
+  </view>
 </view>

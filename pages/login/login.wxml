@@ -5,11 +5,11 @@
   <block>
     <view class='txtCss'>
     <label>用户名称</label>
-      <input type="text" maxlength="15" placeholder="Enter Username(15 character)" auto-focus id="username" bindblur="onTxtBlur"/>
+      <input type="text" maxlength="15" placeholder="请输入用户名(长度不<=15)" auto-focus id="username" bindblur="onTxtBlur"/>
     </view>
     <view class='txtCss'>
     <label>用户密码</label>
-      <input type="password" maxlength="20" placeholder="Enter Password(20 character)" id="password" bindblur="onTxtBlur"/>
+      <input type="password" maxlength="20" placeholder="请输入密码(长度不<=20)" id="password" bindblur="onTxtBlur"/>
     </view>
     <view class='txtBtn'>
       <button bindtap="onBtnLogin" size="default" type="primary" hover-class="button-hover">
