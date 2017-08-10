@@ -16,23 +16,31 @@ Page({
     AreaInfo: {},
     scrollTop: 100,
     LoadingTitle: '点击显示Loading弹框',
+    CurrentSelectTab: null
   },
-
+  __UpdateRender() {
+    this.setData(this.data);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getApp().Tabs.OnInit({
+    const __TabInfo = {
       SelectIndex: 2,
       List: [
         { Id: 1, Name: '状态1', onSelect: this.__OnSelectTab.bind(this) },
         { Id: 2, Name: '状态2', onSelect: this.__OnSelectTab.bind(this) },
         { Id: 3, Name: '状态3', onSelect: this.__OnSelectTab.bind(this) },
       ]
-    });
+    };
+    this.data.CurrentSelectTab = __TabInfo.List[2];
+    getApp().Tabs.OnInit(__TabInfo);
   },
-  __OnSelectTab(event, args) {
-    console.log('__OnSelectTab---');
+
+  __OnSelectTab(args) {
+    console.log('__OnSelectTab---', args);
+    this.data.CurrentSelectTab = args;
+    this.__UpdateRender();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

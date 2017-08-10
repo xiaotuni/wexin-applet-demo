@@ -67,6 +67,7 @@ Page({
     const { Condition } = AreaInfo || {};
     const { IsNextData } = Condition || {};
     if (!!IsNextData) {
+      Utility.$Loading();
       this.InitData(Condition);
     }
 

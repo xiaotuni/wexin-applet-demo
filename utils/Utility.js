@@ -34,6 +34,18 @@ class Utility {
     // wx.showNavigationBarLoading();
   }
 
+  static $RedirectTo(url, params) {
+    if (!url || !wx) {
+      return;
+    }
+    const _p = this.$ConvertToUrlParams(params);
+    let __url = url;
+    if (_p && _p !== '') {
+      __url += '?' + _p;
+    }
+    wx.redirectTo({ url: __url });
+  }
+
   static $GoBack() {
     wx.navigateBack(1);
     // wx.showNavigationBarLoading();
@@ -140,6 +152,9 @@ class Utility {
   }
 
   static $GetContent(key) {
+    if (!this.__TempContent) {
+      this.__TempContent = {};
+    }
     let __value = this.__TempContent ? this.__TempContent[key] : null;
     if (!__value) {
       try {
@@ -211,6 +226,10 @@ Utility.$ConstItem = {
     Home: '/pages/index/index',
     Test: '/pages/test/test',
     Login: '/pages/login/login',
+    Tab0: '/pages/Tabs/tab',
+    Tab1: '/pages/Tabs/tab1/tab1',
+    Tab2: '/pages/Tabs/tab2/tab2',
+    Tab3: '/pages/Tabs/tab3/tab3',
     /**
      * 滚动页面
      */

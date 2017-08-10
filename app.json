@@ -4,7 +4,11 @@
     "pages/login/login",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/ScrollView/ScrollView"
+    "pages/ScrollView/ScrollView",
+    "pages/Tabs/tab",
+    "pages/Tabs/tab1/tab1",
+    "pages/Tabs/tab3/tab3",
+    "pages/Tabs/tab2/tab2"
   ],
   "window": {
     "backgroundTextStyle": "light",

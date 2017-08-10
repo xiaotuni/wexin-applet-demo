@@ -1,13 +1,19 @@
 <import src="../../components/tabs/tabs.wxml" />
 <import src="../../components/loading/loading.wxml" />
-<template is="XtnLoading" data="{{...TData}}"/>
+<template is="XtnLoading" data="{{...TData}}" />
 
-<view>
-  <button type="default" size="defaultSize" plain="plain" bindtap="onTapScrollView" hover-class="other-button-hover">scroll view</button> 
-  
-  <template is="XtnTabs" data="{{...TTabs}}"/>
+<view class="testCss">
+  <button type="default" size="defaultSize" plain="plain" bindtap="onTapScrollView" hover-class="other-button-hover">scroll view</button>
 
-  <button type="primary" size="defaultSize" bindtap="onTapLoading" >{{LoadingTitle}}</button> 
- 
+  <template is="XtnTabs" data="{{...TTabs}}" />
+
+  <view class="tab1">
+    <view wx:if="{{CurrentSelectTab}}">
+      <text class="name">{{CurrentSelectTab.Name}}</text>
+    </view>
+  </view>
+
+  <button type="primary" size="defaultSize" bindtap="onTapLoading">{{LoadingTitle}}</button>
+
 
 </view>

@@ -6,7 +6,7 @@
     bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
   </scroll-view> -->
   <view wx:if="{{AreaInfo.List && AreaInfo.List.length>0}}">
-    <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="AreaId">
+    <view class="area" wx:for="{{AreaInfo.List}}" wx:for-item="area" wx:key="{{AreaId}}">
       <text class="id">{{area.AreaId}}</text>
       <text class="name">{{area.AreaName}}</text>
     </view>

@@ -1,6 +1,22 @@
 /* test.wxss */
 
-.area {
+.testCss {
+  padding: 0px;
+}
+
+.testCss .tab1 {
+  /* height: 50px; */
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.testCss .tab1 .name {
+  font-size: 20pt;
+  margin-top: 20px;
+}
+
+.testCss .area {
   display: flex;
   border: 1px solid #e0e0e0;
   padding: 10px;
@@ -8,19 +24,19 @@
   border-radius: 9px;
 }
 
-.area:hover {
+.testCss .area:hover {
   background: #e0e0e0;
 }
 
-.area:active {
+.testCss .area:active {
   border: 1px solid blue;
 }
 
-.area .id {
+.testCss .area .id {
   margin-right: 10px;
 }
 
-.area .name {
+.testCss .area .name {
   flex: 1;
   text-align: center
 }
