@@ -17,9 +17,18 @@ App({
     Utility.$On(HttpStatus['400'], (args) => {
       wx.showToast({ title: args });
     });
+
+    Utility.$On(HttpStatus['404'], (args) => {
+      wx.showToast({ title: args });
+    });
     Utility.$On(HttpStatus['401'], (args) => {
       wx.showToast({ title: args });
-      Utility.$ToPage(UrlItem.Login);
+      setTimeout(() => {
+        Utility.$ToPage(UrlItem.Login, { IsGoBack: 1 });
+      }, 1000);
+    });
+    Utility.$On(HttpStatus['500'], (args) => {
+      wx.showToast({ title: args });
     });
   },
 

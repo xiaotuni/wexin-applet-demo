@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/test/test",
+    "pages/login/login",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/login/login",
     "pages/ScrollView/ScrollView"
   ],
   "window": {

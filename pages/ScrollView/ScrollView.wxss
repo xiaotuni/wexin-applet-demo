@@ -1,5 +1,10 @@
 /* ScrollView.wxss */
-.area {
+
+.scrollViewCss {
+  font-size: 12pt;
+}
+
+.scrollViewCss .area {
   display: flex;
   border: 1px solid #e0e0e0;
   padding: 10px;
@@ -7,19 +12,19 @@
   border-radius: 9px;
 }
 
-.area:hover {
+.scrollViewCss .area:hover {
   background: #e0e0e0;
 }
 
-.area:active {
+.scrollViewCss .area:active {
   border: 1px solid blue;
 }
 
-.area .id {
+.scrollViewCss .area .id {
   margin-right: 10px;
 }
 
-.area .name {
+.scrollViewCss .area .name {
   flex: 1;
   text-align: center
 }

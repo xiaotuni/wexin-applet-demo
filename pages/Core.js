@@ -4,4 +4,6 @@ import Utility from '../utils/Utility';
 const Event = new emitter();
 const ApiClient = new client();
 
-export { Event,ApiClient,Utility };
+
+import BasePage from './BasePage';
+export { Event, ApiClient, Utility, BasePage };

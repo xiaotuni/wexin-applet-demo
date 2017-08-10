@@ -10,6 +10,7 @@
   -webkit-box-align: center;
   -webkit-box-pack: center;
   font-size: 16px;
+  z-index: 9999;
 }
 
 .loadingCss .content {

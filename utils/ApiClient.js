@@ -17,6 +17,11 @@ export default class ApiClient {
         const url = formatUrl(path);
 
         const header = { 'Content-Type': 'application/json' };
+        const ti = Utility.$GetContent(Utility.$ConstItem.TokenInfo);
+        const { token } = ti || {};
+        if (token) {
+          header.token = token;
+        }
         const __Condition = Object.assign({}, params || {}, data || {});
         const { PageIndex, PageSize } = __Condition;
         wx.request({
@@ -67,7 +72,7 @@ export default class ApiClient {
       /**
        * post 用户登录
        */
-      Login: '/user/login',
+      Login: '/userinfo/login',
     }
 
   }

@@ -15,12 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const self = this;
-    getApp().Loading.OnInit();
-    Utility.$Loading();
-    const __CND = { PageIndex: 0, PageSize: 20 };
-    this.InitData(__CND);
-    Utility.$SetContent('abcdef', __CND, true);
+
   },
 
   /**
@@ -34,7 +29,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const self = this;
+    getApp().Loading.OnInit();
+    Utility.$Loading();
+    const __CND = { PageIndex: 0, PageSize: 20 };
+    this.InitData(__CND);
   },
 
   /**
@@ -94,6 +93,7 @@ Page({
         // self.UpdateData();
       }, 2000);
     }, (err) => {
+      Utility.$LoadingHide();
       console.log(err);
     });
   },

@@ -1,5 +1,5 @@
-<import src="../../components/loading/loading.wxml" />
 <import src="../../components/tabs/tabs.wxml" />
+<import src="../../components/loading/loading.wxml" />
 <template is="XtnLoading" data="{{...TData}}"/>
 
 <view>

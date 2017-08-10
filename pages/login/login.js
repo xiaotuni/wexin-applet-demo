@@ -1,66 +1,46 @@
 // login.js
-Page({
+import { Utility, ApiClient, BasePage } from '../Core';
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-  
-  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+class Login extends BasePage {
+  constructor() {
+    super();
+    this.data = {};
+    this.onBtnLogin = this.onBtnLogin.bind(this);
+    this.onTxtBlur = this.onTxtBlur.bind(this);
+    this._onLoad = this._onLoad.bind(this);
   }
-})
+
+  _onLoad(args) {
+    this.UrlParam = args;
+    console.log('login -----on load', args);
+  }
+
+  onTxtBlur(event) {
+    const { detail, currentTarget } = event;
+    const { id } = currentTarget;
+    const { value } = detail;
+    this.data[id] = value;
+    console.log(this.data);
+  }
+
+  onBtnLogin() {
+    Utility.$Loading();
+    const self = this;
+    const { UrlParam } = this;
+    const { IsGoBack } = UrlParam || {};
+    ApiClient.post(ApiClient.Api.Login, { data: this.data }).then((success) => {
+      Utility.$LoadingHide();
+      Utility.$SetContent(Utility.$ConstItem.TokenInfo, success, true);
+      if(IsGoBack==='1'){
+        Utility.$GoBack();
+      }
+      console.log(success);
+    }, () => {
+      Utility.$LoadingHide();
+    });
+  }
+}
+Page(new Login())
+
+

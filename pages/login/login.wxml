@@ -1,33 +1,20 @@
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <view class="section section_gap">
-    <view class="section__title">切换</view>
-    <switch name="switch"/>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">滑动</view>
-    <slider name="slider" show-value ></slider>
-  </view>
+<import src="../../components/loading/loading.wxml" />
+<template is="XtnLoading" data="{{...TData}}"/>
 
-  <view class="section">
-    <view class="section__title">输入框</view>
-    <input name="input" placeholder="请填写内容" />
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">radio</view>
-    <radio-group name="radio-group">
-      <label><radio value="radio1"/>单选1</label>
-      <label><radio value="radio2"/>单选2</label>
-    </radio-group>
-  </view>
-  <view class="section section_gap">
-    <view class="section__title">复选</view>
-    <checkbox-group name="checkbox">
-      <label><checkbox value="checkbox1"/>好</label>
-      <label><checkbox value="checkbox2"/>看了</label>
-    </checkbox-group>
-  </view>
-  <view class="btn-area">
-    <button formType="submit">提交</button>
-    <button formType="reset">重置</button>
-  </view>
-</form>
+<view class="loginCss">
+  <block>
+    <view class='txtCss'>
+    <label>用户名称</label>
+      <input type="text" maxlength="15" placeholder="Enter Username(15 character)" auto-focus id="username" bindblur="onTxtBlur"/>
+    </view>
+    <view class='txtCss'>
+    <label>用户密码</label>
+      <input type="password" maxlength="20" placeholder="Enter Password(20 character)" id="password" bindblur="onTxtBlur"/>
+    </view>
+    <view class='txtBtn'>
+      <button bindtap="onBtnLogin" size="default" type="primary" hover-class="button-hover">
+      确定
+      </button>
+    </view>
+  </block>
+</view>

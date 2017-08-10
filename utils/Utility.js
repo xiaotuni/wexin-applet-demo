@@ -28,12 +28,15 @@ class Utility {
     const _p = this.$ConvertToUrlParams(params);
     let __url = url;
     if (_p && _p !== '') {
-      __url += '/?' + _p;
+      __url += '?' + _p;
     }
     wx.navigateTo({ url: __url });
     // wx.redirectTo({ url: __url });
   }
-
+  
+  static $GoBack() {
+    wx.navigateBack(1);
+  }
   /**
     * 将一个 对象转成url参数与&分开
     *
@@ -178,6 +181,7 @@ Utility.$ConstItem = {
   BrowerTitle: 'Xtn_BrowerTitle',
   QueryParams: 'Xtn_QUERY_PARAMS',
   UrlPathInfo: 'Xtn_URL_PATH_INFO',
+  TokenInfo: 'Xtn_TOKEN_INFO',
 
   Events: {
     HttpStatus: {
