@@ -1,7 +1,6 @@
   .tabsCss {
     display: flex;
     font-size: 14pt;
-    /* padding: 5px 0px; */
     border: 1px solid #f0f0f0;
     margin: 5px 0px;
   }
@@ -15,7 +14,7 @@
     -webkit-box-pack: center;
   }
   
-  .tabsCss :last-child {
+  .tabsCss:last-child {
     border-right: none;
   }
   
